@@ -4,9 +4,11 @@ import * as Yup from 'yup'
 import FormikControl from './FormikControl'
 import { Button } from "@chakra-ui/core";
 import axios from 'axios';
+import { useHistory } from "react-router-dom";
 
 
 function RegistrationForm () {
+  const history = useHistory();
   const initialValues = {
     email: '',
     password: '',
@@ -26,23 +28,19 @@ function RegistrationForm () {
   const onSubmit = (values,submitProps) => {
     submitProps.setSubmitting(false)
     submitProps.resetForm()
-    axios.post('https://localhost:3443/users/login', values)
-        .then(response => {
-            if (response.success) {
-                localStorage.setItem('token', response.token);
-                alert('Registration Successful !')
-            }
-             else {
-                var error = new Error('Error ' + response.status);
-                error.response = response;
-                throw error;
-            }
-        })
-        .catch(error => alert(`Registration Failed: ${error.message}`))
+    axios.post('https://jsonplaceholder.typicode.com/posts', values)
+    .then(response=>{
+            console.log(response)
+            history.push('/login')
+            
+    })
+       .catch(error=>{
+           console.log(error)
+       })
     }
-
   return (
-    <Formik
+     
+     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
@@ -76,4 +74,4 @@ function RegistrationForm () {
   )
 }
 
-export default RegistrationForm
+export default RegistrationForm;

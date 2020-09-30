@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
-import RegistrationForm from './components/RegistrationForm';
 import {theme, ThemeProvider} from '@chakra-ui/core'
+import Routes from './components/Routes'
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-     <div className="App">
-    <RegistrationForm/>
-     </div>
+      <div className="App">
+        <Routes/>
+      </div>
     </ThemeProvider>
   
   );
