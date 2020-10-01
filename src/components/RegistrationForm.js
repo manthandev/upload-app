@@ -27,19 +27,17 @@ function RegistrationForm () {
     submitProps.setSubmitting(false)
     submitProps.resetForm()
     axios.post('http://localhost:4000/users/signup', values)
-    .then(response => {
-        if (response.success) {
-        alert('Registration Successful!')
-        history.push('/login')
-        }
-        else {
-            var error = new Error('Error ' + response.status);
-            error.response = response;
-            throw error;
-        }
+    .then(response=>{
+        if(response.status === 200)
+            alert('Registration Successful!')
+            history.push('/login')
+            
     })
-    .catch(error => alert('Error: '+ error.message))
-   }
+       .catch(error=>{
+           if(error)
+           alert('Username exists!')
+       })
+    }
   return (
      
      <Formik

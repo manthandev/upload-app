@@ -19,14 +19,22 @@ function LoginForm () {
   })
 
   const onSubmit = (values,submitProps) => {
+    submitProps.setSubmitting(false)  
     submitProps.resetForm()
     axios.post('http://localhost:4000/users/login', values)
-    .then(response=>{
-            console.log(response)
+    .then(response => {
+        if (response.status === 200) {
+            localStorage.setItem('token', response.data.token);
+            history.push('./upload')
+        
+        }
+        else {
+            var error = new Error('Error ' + response.status);
+            error.response = response;
+            throw error;
+        }
     })
-       .catch(error=>{
-           console.log(error)
-       })
+    .catch(error => (error.message))
     }
 
   return (
