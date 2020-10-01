@@ -3,23 +3,31 @@ import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import FormikControl from './FormikControl'
 import { Button } from "@chakra-ui/core";
+import axios from 'axios';
+import { useHistory } from "react-router-dom";
 
 function LoginForm () {
+  const history = useHistory();
   const initialValues = {
-    email: '',
+    username: '',
     password: ''
   }
 
   const validationSchema = Yup.object({
-    email: Yup.string()
-      .email('Invalid email format')
-      .required('Required'),
+    username: Yup.string().required('Required'),
     password: Yup.string().required('Required')
   })
 
-  const onSubmit = values => {
-    console.log('Form data', values)
-  }
+  const onSubmit = (values,submitProps) => {
+    submitProps.resetForm()
+    axios.post('http://localhost:4000/users/login', values)
+    .then(response=>{
+            console.log(response)
+    })
+       .catch(error=>{
+           console.log(error)
+       })
+    }
 
   return (
     <Formik
@@ -32,9 +40,9 @@ function LoginForm () {
           <Form>
             <FormikControl
               control='input'
-              type='email'
-              label='Email'
-              name='email'
+              type='text'
+              label='Username'
+              name='username'
             />
             <FormikControl
               control='input'

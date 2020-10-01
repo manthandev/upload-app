@@ -7,7 +7,7 @@ import {
   FormErrorMessage
 } from '@chakra-ui/core'
 
-function ChakraInput (props) {
+function InputField (props) {
   const { label, name, ...rest } = props
   return (
     <Field name={name}>
@@ -22,4 +22,4 @@ function ChakraInput (props) {
   )
 }
 
-export default ChakraInput
+export default InputField

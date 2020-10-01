@@ -1,12 +1,12 @@
 import React from 'react'
-import Input from './Input'
+import InputField from './Input'
 
 
 function FormikControl (props) {
   const { control, ...rest } = props
   switch (control) {
     case 'input':
-      return <Input {...rest} />
+      return <InputField {...rest} />
     default:
       return null
   }

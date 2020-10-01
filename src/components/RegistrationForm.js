@@ -10,15 +10,13 @@ import { useHistory } from "react-router-dom";
 function RegistrationForm () {
   const history = useHistory();
   const initialValues = {
-    email: '',
+    username: '',
     password: '',
     confirmPassword: '',
   }
 
   const validationSchema = Yup.object({
-    email: Yup.string()
-      .email('Invalid email format')
-      .required('Required'),
+    username: Yup.string().required('Required'),
     password: Yup.string().required('Required'),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref('password'), ''], 'Passwords must match')
@@ -28,16 +26,20 @@ function RegistrationForm () {
   const onSubmit = (values,submitProps) => {
     submitProps.setSubmitting(false)
     submitProps.resetForm()
-    axios.post('https://jsonplaceholder.typicode.com/posts', values)
-    .then(response=>{
-            console.log(response)
-            history.push('/login')
-            
+    axios.post('http://localhost:4000/users/signup', values)
+    .then(response => {
+        if (response.success) {
+        alert('Registration Successful!')
+        history.push('/login')
+        }
+        else {
+            var error = new Error('Error ' + response.status);
+            error.response = response;
+            throw error;
+        }
     })
-       .catch(error=>{
-           console.log(error)
-       })
-    }
+    .catch(error => alert('Error: '+ error.message))
+   }
   return (
      
      <Formik
@@ -50,9 +52,9 @@ function RegistrationForm () {
           <Form>
             <FormikControl
               control='input'
-              type='email'
-              label='Email'
-              name='email'
+              type='text'
+              label='Username'
+              name='username'
             />
             <FormikControl
               control='input'
