@@ -3,8 +3,10 @@ import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import FormikControl from './FormikControl'
 import { Button } from "@chakra-ui/core";
-import axios from 'axios';
+import Axios from 'axios';
 import { useHistory } from "react-router-dom";
+
+
 
 function LoginForm () {
   const history = useHistory();
@@ -12,6 +14,7 @@ function LoginForm () {
     username: '',
     password: ''
   }
+
 
   const validationSchema = Yup.object({
     username: Yup.string().required('Required'),
@@ -21,7 +24,7 @@ function LoginForm () {
   const onSubmit = (values,submitProps) => {
     submitProps.setSubmitting(false)  
     submitProps.resetForm()
-    axios.post('http://localhost:4000/users/login', values)
+    Axios.post('http://localhost:4000/users/login', values)
     .then(response => {
         if (response.status === 200) {
             localStorage.setItem('token', response.data.token);

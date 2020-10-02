@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import FormikControl from './FormikControl'
 import { Button } from "@chakra-ui/core";
-import axios from 'axios';
+import Axios from 'axios';
 import { useHistory } from "react-router-dom";
 
 
@@ -26,7 +26,7 @@ function RegistrationForm () {
   const onSubmit = (values,submitProps) => {
     submitProps.setSubmitting(false)
     submitProps.resetForm()
-    axios.post('http://localhost:4000/users/signup', values)
+    Axios.post('http://localhost:4000/users/signup', values)
     .then(response=>{
         if(response.status === 200)
             alert('Registration Successful!')
