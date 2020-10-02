@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import React,{Component} from 'react';
 import '../App.css';
+import { Button } from "@chakra-ui/core";
 
 class Upload extends Component{
   state = {
@@ -34,7 +35,7 @@ return Axios.post('https://api.cloudinary.com/v1_1/imaginarycloud/image/upload',
             <div className="form-group">
               <input type="file"/>
             </div>
-        <button type="button" className="btn" onClick={this.handleImageUpload}>Submit</button>
+        <Button variantColor="blue" type="button" className="mt-1" onClick={this.handleImageUpload}>Submit</Button>
           </form>
         </section>
         <section className="right-side">

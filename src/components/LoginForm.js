@@ -41,14 +41,14 @@ function LoginForm () {
     }
 
   return (
-    <Formik
+    <Formik 
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
       {formik => {
         return (
-          <Form>
+          <Form className="forms mt-5">
             <FormikControl
               control='input'
               type='text'
@@ -61,7 +61,7 @@ function LoginForm () {
               label='Password'
               name='password'
             />
-           <Button className='formSubmit' variantColor="green" type='submit' disabled={!formik.isValid}>Submit</Button>
+           <Button className='mt-2' variantColor="blue" type='submit' disabled={!formik.isValid}>Submit</Button>
           </Form>
         )
       }}
