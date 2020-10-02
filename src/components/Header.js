@@ -5,20 +5,20 @@ import { NavLink } from 'react-router-dom';
 function Header() {
     return (
        <div>
-        <Navbar dark color="primary">
-            <NavbarBrand href="/">Cloudinary Upload</NavbarBrand>
-            <Nav pullRight>
+        <Navbar> 
+            <NavbarBrand className="brand mr-auto" href="/"><span className="fa fa-cloud fa-lg"></span> Cloudinary Upload</NavbarBrand>
+            <Nav>
             <NavItem >
             <NavLink className="nav-link" to="/signup">
-            <span></span> Sign Up
+            <span className="fa fa-user-plus fa-lg"></span> Sign Up
             </NavLink>
             </NavItem>
             <NavItem>
             <NavLink className="nav-link" to="/login">
-            <span></span> Login
+            <span className="fa fa-sign-in fa-lg"></span> Login
             </NavLink> 
             </NavItem>
-          </Nav>
+            </Nav>
         </Navbar>
        </div>
     )

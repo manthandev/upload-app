@@ -3,10 +3,15 @@
   width: 350px;
   padding: 10px;
 }
+.form-label{
+  color:floralwhite;
+}
 .jumbotron {
   padding:70px 30px 70px 30px;
   margin:0px auto;
-  background: #fff;
+  background: rgb(2,0,36);
+  color:floralwhite;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
 }
 .nav-link{
   color:floralwhite;
@@ -15,3 +20,23 @@
    color: #fff !important;
    text-decoration: none;
   }
+  .navbar-dark{
+    background-color:white;
+}
+.brand{
+  color:floralwhite;
+  font-weight: bold;
+}
+.brand:hover{
+  color: #fff !important;
+  text-decoration: none;
+ }
+ p{
+   color: floralwhite;
+   text-align: center;
+ }
+.displayed-image {
+  margin:auto;
+  height: 300px;
+  width: 300px;
+}

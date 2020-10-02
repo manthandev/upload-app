@@ -1,4 +1,3 @@
-import { Divider } from '@chakra-ui/core';
 import React from 'react'
 import {Jumbotron} from 'reactstrap'
 import { Heading } from "@chakra-ui/core";

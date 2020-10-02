@@ -13,7 +13,7 @@ function InputField (props) {
     <Field name={name}>
       {({ field, form }) => (
         <FormControl isRequired isInvalid={form.errors[name] && form.touched[name]}>
-          <FormLabel htmlFor={name}>{label}</FormLabel>
+          <FormLabel className="form-label" htmlFor={name}>{label}</FormLabel>
           <Input id={name} {...rest} {...field} />
           <FormErrorMessage>{form.errors[name]}</FormErrorMessage>
         </FormControl>
