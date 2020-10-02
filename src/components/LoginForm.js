@@ -2,7 +2,7 @@ import React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import FormikControl from './FormikControl'
-import { Button } from "@chakra-ui/core";
+import { Button,Heading } from "@chakra-ui/core";
 import Axios from 'axios';
 import { useHistory } from "react-router-dom";
 
@@ -19,6 +19,8 @@ function LoginForm () {
   const validationSchema = Yup.object({
     username: Yup.string().required('Required'),
     password: Yup.string().required('Required')
+    .min(2, 'Too short')
+    .max(10, 'Should be less than 10 characters.')
   })
 
   const onSubmit = (values,submitProps) => {
@@ -28,8 +30,8 @@ function LoginForm () {
     .then(response => {
         if (response.status === 200) {
             localStorage.setItem('token', response.data.token);
+            alert('Login Success!')
             history.push('./upload')
-        
         }
         else {
             var error = new Error('Error ' + response.status);
@@ -37,7 +39,7 @@ function LoginForm () {
             throw error;
         }
     })
-    .catch(error => (error.message))
+    .catch(error =>alert(error))
     }
 
   return (
@@ -49,6 +51,7 @@ function LoginForm () {
       {formik => {
         return (
           <Form className="forms mt-5">
+            <Heading className="form-head">Login to your account!</Heading>
             <FormikControl
               control='input'
               type='text'
@@ -61,7 +64,7 @@ function LoginForm () {
               label='Password'
               name='password'
             />
-            <Button className='mt-2' variantColor="blue" type='submit' disabled={!formik.isValid}>Submit</Button>
+            <Button className='mt-2' variantColor="blue" type='submit' disabled={!formik.isValid}>Login</Button>
           </Form>
         )
       }}

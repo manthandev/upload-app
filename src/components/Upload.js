@@ -23,7 +23,7 @@ return Axios.post('https://api.cloudinary.com/v1_1/imaginarycloud/image/upload',
       imageAlt: `An image of ${response.data.original_filename}`
     })
   })
-  .catch(err => console.log(err));
+  .catch(err => alert(err));
   }
 
   render() {
@@ -41,7 +41,7 @@ return Axios.post('https://api.cloudinary.com/v1_1/imaginarycloud/image/upload',
         </Form>
           </section>
           <section className="right-side">
-          <p>The resulting image will be displayed here</p>
+          <p>The uploaded image will be displayed here</p>
           {imageUrl && (
             <img src={imageUrl} alt={imageAlt} className="displayed-image"/>
           )}

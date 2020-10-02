@@ -4,7 +4,7 @@ import {
   Input,
   FormControl,
   FormLabel,
-  FormErrorMessage
+  FormErrorMessage,
 } from '@chakra-ui/core'
 
 function InputField (props) {
