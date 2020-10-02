@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import React,{Component} from 'react';
 import '../App.css';
-import { Button } from "@chakra-ui/core";
+import { Button,Heading } from "@chakra-ui/core";
 import { CustomInput, Form, FormGroup, Label } from 'reactstrap';
 
 class Upload extends Component{
@@ -18,6 +18,7 @@ formData.append('upload_preset', 'randomimages');
 
 return Axios.post('https://api.cloudinary.com/v1_1/imaginarycloud/image/upload', formData)
   .then(response => {
+    console.log(response)
     this.setState({
       imageUrl: response.data.secure_url,
       imageAlt: `An image of ${response.data.original_filename}`
@@ -34,14 +35,15 @@ return Axios.post('https://api.cloudinary.com/v1_1/imaginarycloud/image/upload',
         <section className="left-side">
          <Form>
             <FormGroup className="forms">
+            <Heading className="form-head">Upload Your Image!</Heading> 
             <Label className="form-label" for="file">Select an image</Label>
             <CustomInput type="file" id="file"/>
-            <Button variantColor="blue" type="button" className="mt-2" onClick={this.handleImageUpload}>Submit</Button>
+            <Button variantColor="blue" type="button" className="mt-2" onClick={this.handleImageUpload}><span className="fa fa-cloud-upload fa-lg"></span></Button>
             </FormGroup>
         </Form>
           </section>
           <section className="right-side">
-          <p>The uploaded image will be displayed here</p>
+          <p>The uploaded image will be displayed here.</p>
           {imageUrl && (
             <img src={imageUrl} alt={imageAlt} className="displayed-image"/>
           )}

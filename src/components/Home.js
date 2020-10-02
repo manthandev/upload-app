@@ -6,12 +6,10 @@ function Home() {
     return (
         <Jumbotron className="mt-5" >
         <div className="container">
-            <div className="row row-header d-flex justify-content-center">
-                <div className="col-12 col-sm-6">
+            <div className="d-flex justify-content-center">
                 <Heading>Welcome to Image Upload Service</Heading>
-                </div>
             </div>
-        </div>
+       </div>
     </Jumbotron>
     )
 }

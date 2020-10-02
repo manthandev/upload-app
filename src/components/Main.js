@@ -8,7 +8,7 @@ import Header from "./Header"
 import Home from "./Home"
 
  
-export default function Routes() {
+export default function Main() {
   return (
     <div>
     <Header/>

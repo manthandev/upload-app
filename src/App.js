@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {theme, ThemeProvider, CSSReset} from '@chakra-ui/core'
-import Routes from './components/Routes'
+import Main from './components/Main'
 
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CSSReset />
       <div className="App">
-        <Routes/>
+        <Main/>
       </div>
     </ThemeProvider>
   
